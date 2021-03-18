@@ -1,0 +1,171 @@
+cách sử dụng: aircrack-ng [options] <(các) tập tin đầu vào>
+
+  Các tùy chọn phổ biến:
+
+      -a <amode>: chế độ tấn công cưỡng bức (1 / WEP, 2 / WPA-PSK)
+      -e <essid>: lựa chọn mục tiêu: định danh mạng
+      -b <bssid>: lựa chọn mục tiêu: MAC của điểm truy cập
+      -p <nbcpu>: số CPU sẽ sử dụng (mặc định: tất cả các CPU)
+      -q: bật chế độ yên tĩnh (không có đầu ra trạng thái)
+      -C <macs>: hợp nhất các AP đã cho thành một AP ảo
+      -l <file>: ghi khóa vào tệp. Ghi đè tệp.
+
+  Các tùy chọn bẻ khóa WEP tĩnh:
+
+      -c: chỉ tìm kiếm các ký tự chữ-số
+      -t: chỉ tìm kiếm chr thập phân được mã hóa nhị phân
+      -h: tìm kiếm phím số cho Fritz! BOX
+      -d <mask>: sử dụng mặt nạ của khóa (A1: XX: CF: YY)
+      -m <maddr>: Địa chỉ MAC để lọc các gói có thể sử dụng
+      -n <nbits>: Độ dài khóa WEP: 64/128/152/256/512
+      -i <index>: chỉ mục khóa WEP (1 đến 4), mặc định: bất kỳ
+      -f <fudge>: bruteforce fudge factor, default: 2
+      -k <korek>: vô hiệu hóa một phương thức tấn công (1 đến 17)
+      -x hoặc -x0: vô hiệu hóa bruteforce cho các keybyte cuối cùng
+      -x1: keybyte bruteforcing cuối cùng (mặc định)
+      -x2: bật bruteforcing 2 keybyte cuối cùng
+      -X: vô hiệu hóa đa luồng bruteforce
+      -y: chế độ bruteforce đơn thử nghiệm
+      -K: chỉ sử dụng các cuộc tấn công KoreK cũ (trước PTW)
+      -s: hiển thị khóa trong ASCII khi bẻ khóa
+      -M <num>: chỉ định số lượng IV tối đa để sử dụng
+      -D: WEP decloak, bỏ qua các dòng khóa bị hỏng
+      -P <num>: gỡ lỗi PTW: 1: vô hiệu hóa Klein, 2: PTW
+      -1: chỉ chạy 1 lần thử bẻ khóa bằng PTW
+      -V: chạy ở chế độ kiểm tra trực quan
+
+  Tùy chọn bẻ khóa WEP và WPA-PSK:
+
+      -w <words>: đường dẫn đến (các) tên tệp từ danh sách
+      -N <file>: đường dẫn đến tên tệp phiên mới
+      -R <file>: đường dẫn đến tên tệp phiên hiện có
+
+  Tùy chọn WPA-PSK:
+
+      -E <file>: tạo tệp Dự án EWSA v3
+      -I <str>: Chuỗi PMKID (hashcat -m 16800)
+      -j <file>: tạo tệp Hashcat v3.6 + (HCCAPX)
+      -J <file>: tạo tệp Hashcat (HCCAP)
+      -S: Kiểm tra tốc độ bẻ khóa WPA
+      -Z <sec>: Độ dài kiểm tra tốc độ bẻ khóa WPA của
+                   chấp hành.
+      -r <DB>: đường dẫn đến cơ sở dữ liệu airolib-ng
+                   (Không thể sử dụng với -w)
+
+  Lựa chọn SIMD:
+
+      --simd-list: Hiển thị danh sách có sẵn
+                          Kiến trúc SIMD, cho điều này
+                          máy móc.
+      --simd = <option>: Sử dụng kiến ​​trúc SIMD cụ thể.
+
+      <option> có thể là một trong những điều sau đây, tùy thuộc vào
+      nền tảng của bạn:
+
+                   chung
+                   avx512
+                   avx2
+                   avx
+                   sse2
+                   altivec
+                   sức mạnh8
+                   asimd
+                   đèn neon
+
+  Sự lựa chọn khác:
+
+      -u: Hiển thị số lượng CPU và hỗ trợ SIMD
+      --help: Hiển thị màn hình sử dụng này
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+usage: aircrack-ng [options] <input file(s)>
+
+  Common options:
+
+      -a <amode> : force attack mode (1/WEP, 2/WPA-PSK)
+      -e <essid> : target selection: network identifier
+      -b <bssid> : target selection: access point's MAC
+      -p <nbcpu> : # of CPU to use  (default: all CPUs)
+      -q         : enable quiet mode (no status output)
+      -C <macs>  : merge the given APs to a virtual one
+      -l <file>  : write key to file. Overwrites file.
+
+  Static WEP cracking options:
+
+      -c         : search alpha-numeric characters only
+      -t         : search binary coded decimal chr only
+      -h         : search the numeric key for Fritz!BOX
+      -d <mask>  : use masking of the key (A1:XX:CF:YY)
+      -m <maddr> : MAC address to filter usable packets
+      -n <nbits> : WEP key length :  64/128/152/256/512
+      -i <index> : WEP key index (1 to 4), default: any
+      -f <fudge> : bruteforce fudge factor,  default: 2
+      -k <korek> : disable one attack method  (1 to 17)
+      -x or -x0  : disable bruteforce for last keybytes
+      -x1        : last keybyte bruteforcing  (default)
+      -x2        : enable last  2 keybytes bruteforcing
+      -X         : disable  bruteforce   multithreading
+      -y         : experimental  single bruteforce mode
+      -K         : use only old KoreK attacks (pre-PTW)
+      -s         : show the key in ASCII while cracking
+      -M <num>   : specify maximum number of IVs to use
+      -D         : WEP decloak, skips broken keystreams
+      -P <num>   : PTW debug:  1: disable Klein, 2: PTW
+      -1         : run only 1 try to crack key with PTW
+      -V         : run in visual inspection mode
+
+  WEP and WPA-PSK cracking options:
+
+      -w <words> : path to wordlist(s) filename(s)
+      -N <file>  : path to new session filename
+      -R <file>  : path to existing session filename
+
+  WPA-PSK options:
+
+      -E <file>  : create EWSA Project file v3
+      -I <str>   : PMKID string (hashcat -m 16800)
+      -j <file>  : create Hashcat v3.6+ file (HCCAPX)
+      -J <file>  : create Hashcat file (HCCAP)
+      -S         : WPA cracking speed test
+      -Z <sec>   : WPA cracking speed test length of
+                   execution.
+      -r <DB>    : path to airolib-ng database
+                   (Cannot be used with -w)
+
+  SIMD selection:
+
+      --simd-list       : Show a list of the available
+                          SIMD architectures, for this
+                          machine.
+      --simd=<option>   : Use specific SIMD architecture.
+
+      <option> may be one of the following, depending on
+      your platform:
+
+                   generic
+                   avx512
+                   avx2
+                   avx
+                   sse2
+                   altivec
+                   power8
+                   asimd
+                   neon
+
+  Other options:
+
+      -u         : Displays # of CPUs & SIMD support
+      --help     : Displays this usage screen      
